@@ -1,0 +1,4 @@
+username,date,task_id,completed
+Tom,2025-06-28,1,True
+Tom,2025-06-28,2,True
+Tom,2025-06-28,3,False
