@@ -208,18 +208,18 @@ if not user_row.empty:
         with st.form("report_issue_form"):
             issue_type = st.selectbox("問題類型", ISSUE_TYPES)
             desc = st.text_area("請簡要描述問題")
-            # photo = st.file_uploader("上傳相關照片（可選）", type=["jpg", "jpeg", "png"])
-            uploaded_photos = st.file_uploader("上傳最多 5 張圖片", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
-            if uploaded_photos and len(uploaded_photos) > 5:
-                st.warning("請勿上傳超過 5 張圖片！")
+            photo = st.file_uploader("上傳相關照片（可選）", type=["jpg", "jpeg", "png"])
+            #uploaded_photos = st.file_uploader("上傳最多 5 張圖片", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
+            #if uploaded_photos and len(uploaded_photos) > 5:
+            #    st.warning("請勿上傳超過 5 張圖片！")
 
             submitted_issue = st.form_submit_button("📤 送出回報")
 
         if submitted_issue:
             now = datetime.now()
             filename = ""
-            if uploaded_photos:
-                extension = uploaded_photos.name.split(".")[-1]
+            if photo:
+                extension = photo.name.split(".")[-1]
                 filename = f"{now.strftime('%Y-%m-%d')}_{username}_{uuid.uuid4().hex[:6]}.{extension}"
                 filepath = os.path.join(uploads_dir, filename)
                 with open(filepath, "wb") as f:
