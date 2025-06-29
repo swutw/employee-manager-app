@@ -218,8 +218,8 @@ if not user_row.empty:
         if submitted_issue:
             now = datetime.now()
             filename = ""
-            if photo:
-                extension = photo.name.split(".")[-1]
+            if uploaded_photos:
+                extension = uploaded_photos.name.split(".")[-1]
                 filename = f"{now.strftime('%Y-%m-%d')}_{username}_{uuid.uuid4().hex[:6]}.{extension}"
                 filepath = os.path.join(uploads_dir, filename)
                 with open(filepath, "wb") as f:
